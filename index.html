@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quiz Page</title>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="IDK WIA">
+        <meta name="description" content="Quiz Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/code.css">
+        
+    </head>
+    <body>
+        <header class="qp__header">
+            <a class="qp__header__logo" href="#">
+                PRiSMLab
+            </a>
+            <div class="qp__header__menu-btn" onclick="openMenu()">
+            </div>
+        </header>
+
+        <nav class="qp__menu">
+            <a href="#">HOME</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">NEWS</a>
+            <a href="#">RECUIT</a>
+            <a href="#">CONTACT</a>
+        </nav>
+
+        <main class="qp__content">
+            <div class="qp__content__title">
+                <h2>
+                    <span>?</span> 
+                    以下のコードの実装結果は？
+                </h2>
+            </div>
+
+            <div class="qp__content__container">
+                <pre class="qp__code">
+                    <code></code>
+                </pre>
+
+                <div class="qp__select-form">
+                    <div class="qp__select-form__option">
+                        <input type="radio">
+                        <label for=""></label>
+                    </div>
+                    <div class="qp__select-form__option">
+                        <input type="radio">
+                        <label for=""></label>
+                    </div>
+                    <div class="qp__select-form__option">
+                        <input type="radio">
+                        <label for=""></label>
+                    </div>
+                    <div class="qp__select-form__option">
+                        <input type="radio">
+                        <label for=""></label>
+                    </div>
+
+                    <div class="qp__select-form__btn">
+                        <button onclick="checkAnswer()" disabled>Check your answer!</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="qp__result">
+            <canvas id="my-canvas"></canvas>
+            <div class="qp__result--true">
+                <div class="qp__result--true__img">
+                    <img src="https://media.tenor.com/vsenqx_Ke90AAAAi/clap-cat.gif" alt="icon">
+                </div>
+                
+                <div class="qp__result--true__content">
+                    <p>あなたのコーディングの知識は素晴らしい!!!</p>
+                    <p>私たちと参加して、もっと面白いプロジェクトを一緒に作りましょう!!!</p>
+                    <p>リンクは<a href="#">こちら</a>ですよ！</p>
+                </div>
+            </div>
+            <div class="qp__result__blur"></div>
+    
+            <div class="qp__result--false">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </div>
+        </div>
+
+
+
+
+        <script src="js/quiz-data.js"></script>
+        <script src="js/quiz-created.js"></script>
+        <script src="js/check-answer.js"></script>
+        <script src="js/index.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script>
+            // HIGHLIGHT CODE
+            hljs.highlightAll();
+
+            // OPEN & CLOSE MENU
+            function openMenu() {
+                document.querySelector(".qp__header__menu-btn").classList.toggle("open");
+                document.querySelector(".qp__menu").classList.toggle("open");
+            }
+
+            // CONFETTI FALLING ANIMATION 
+            var confettiSettings = { target: 'my-canvas' };
+            var confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+        </script>
+    </body>
+</html>

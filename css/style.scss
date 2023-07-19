@@ -1,0 +1,411 @@
+@import "_var.scss";
+@import "_font.scss";
+
+
+// RESET CSS
+* {
+	box-sizing: border-box;
+	
+	margin: 0;
+	padding: 0;
+
+
+	img {
+		width: 100%;
+		height: 100%;
+		
+		object-fit: cover;
+	}
+}
+
+
+// BODY WEBSITE
+html, body {
+	position: relative;
+
+	width: 100%;
+	height: 100vh;
+
+	background: $clr-bg;
+	color: $clr-text;
+
+	font-family: $fontCode2;
+	font-size: 16px;
+	font-weight: 200;
+
+	overflow-x: hidden;
+
+
+	// QUIZ PAGE __ HEADER
+	.qp__header {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		display: flex;
+		justify-content: space-between;
+
+		border-bottom: 2px solid $clr-text;
+
+		width: 100%;
+		height: 50px;
+
+		background: $clr-bg;
+
+		z-index: 999;
+
+
+		// QUIZ PAGE __ LOGO
+		&__logo	{
+			display: flex;
+			align-items: center;
+
+			height: 100%;
+			margin-left: 15px;
+
+			color: $clr-text;
+
+			font-family: $fontEng_1;
+			font-size: 1.5rem;
+			text-decoration: none;
+		}
+
+
+		// 	QUIZ PAGE __ MENU BUTTON
+		&__menu-btn {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			width: 50px;
+			height: 100%;
+			gap: 6px;
+
+
+			&::before, &::after {
+				content: "";
+				
+				width: 30px;
+				height: 4px;
+
+				background: $clr-text;
+
+				transition: 0.3s;
+			}
+
+
+			&.open::before {position: absolute; transform: rotate(45deg);}
+			&.open::after {position: absolute; transform: rotate(135deg);}
+		}
+	}
+
+
+	// QUIZ PAGE __ NAVICATION
+	.qp__menu {
+		position: absolute;
+		top: -100%;
+		left: 0;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		width: 100%;
+		height: 100%;
+		gap: 50px;
+
+		background: $clr-bg;
+
+		transition: 0.5s;
+		z-index: 99;
+
+
+		&.open {top: 0;}
+		
+		
+		a {
+			position: relative;
+			width: auto;
+			height: auto;
+			
+			color: $clr-text;
+
+			font-family: $fontEng_2;
+			font-size: 1.5rem;
+			text-decoration: none;
+
+			overflow: hidden;
+		}
+	}
+
+
+	// QUIZ PAGE __ MAIN
+	.qp__content {
+		position: relative;
+
+		width: 100%;
+		margin-top: 80px;
+		margin-bottom: 20px;
+		padding: 0 15px;
+
+
+		// QUIZ PAGE __ QUIZ TITLE
+		&__title h2 {
+			display: flex;
+			align-items: center;
+			
+			width: 100%;
+			height: 50px;
+			margin-bottom: 15px;
+
+			font-family: 'DotGothic16', sans-serif;
+			font-size: 1.2rem;
+			letter-spacing: 0.2rem;
+
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				border-radius: 3px;
+
+				width: 35px;
+				height: 35px;
+				margin-left: 1px;
+				margin-right: 10px;
+
+				background: $clr-text;
+				color: $clr-bg;
+			}
+		}
+
+
+		// QUIZ PAGE __ CODE BLOCK
+		.qp__code {
+			position: relative;
+			
+			display: flex;
+		
+			width: 100%;
+			height: auto;
+			margin-bottom: 40px;
+
+
+			code {
+				@include box;
+    
+				width: calc(100% - 5px);
+				height: auto;
+				padding: 15px;
+    
+				font-size: 1rem;
+				line-height: 1.2;
+			}
+		}
+
+
+		// QUIZ PAGE __ SELECT FORM
+		.qp__select-form {
+			width: 100%;
+
+
+			// QUIZ PAGE __ OPTIONS
+			&__option {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				@include box;
+
+				width: calc(80% - 5px);
+				height: 50px;
+				margin: auto;
+				margin-top: 15px;
+
+
+				&:nth-child(1) {margin-top: 0;}
+
+
+				// QUIZ PAGE __ INPUT
+				input[type="radio"] {display: none;}
+
+
+				// QUIZ PAGE __ LABEL
+				label {
+					position: relative;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					width: 100%;
+					height: 100%;
+					padding: 0 20px;
+
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+
+
+				// QUIZ PAGE __ OPTION CHECKED
+				input[type="radio"]:checked + label {background: $clr-clicked;}
+			}
+
+
+			// QUIZ PAGE __ CHECKED BUTTON
+			&__btn {
+				width: 100%;
+				height: 50px;
+				margin-top: 45px;
+
+
+				button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					@include box;
+					
+					width: calc(100% - 5px);
+					height: 50px;
+					margin-top: -5px;
+					
+					background: $clr-bg;
+					color: $clr-text;
+					
+					font-family: $fontCode2;
+					font-size: 1.3rem;
+					font-weight: 600;
+					
+					
+					// QUIZ PAGE __ BUTTON -- DISABLED
+					&:disabled {
+						box-shadow: none;
+						
+						width: 100%;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+
+
+	// QUIZ PAGE __ RESULT
+	.qp__result {
+
+
+		// QUIZ PAGE __ CONFETTI FALLING ANIMATION
+		canvas {
+			position: fixed;
+			top: -100%;
+			left: 0;
+			
+			width: 100vw;
+			height: 100vh;
+			
+			pointer-events: none;
+			z-index: 999;
+		}
+	
+	
+		// QUIZ PAGE __ CORRECT ANSWER
+		&--true {
+			position: fixed;
+			top: 50%;
+			left: -100%;
+			transform: translateY(-50%);
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+			@include box;
+			
+			width: calc(80% - 5px);
+			height: 450px;
+			padding: 15px;
+			
+			background: $clr-bg;
+			
+			transition: 0.3s;
+			z-index: 2;
+			
+			
+			&.active {left: 50%; transform: translate(-50%, -50%);}
+			
+			
+			// QUIZ PAGE __ RESULT -- CORRECT ANSWER -- EMOJI
+			&__img	{width: 150px; height: auto;}
+			
+			
+			&__content {
+				margin-top: 20px;
+
+				font-family: 'DotGothic16', sans-serif;
+				font-weight: 700;
+				font-size: 0.95rem;
+				line-height: 1.5;
+				letter-spacing: 0.1rem;
+				text-align: center;
+
+
+				p {margin: 5px 0;}
+				a {color: $clr-clicked; text-decoration: none;}
+			}
+		}
+
+
+		&__blur {
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			display: none;
+			
+			width: 100%;
+			height: 100vh;
+
+			background: $clr-bg;
+			opacity: 0.9;
+
+			z-index: 1;
+		}
+	
+		
+		// QUIZ PAGE __ WRONG ANSWER
+		&--false {
+			position: fixed;
+			top: 150px;
+			left: -100%;
+			
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			
+			@include box;
+			border-left: none;
+			border-radius: 0 5px 5px 0;
+			
+			width: 100px;
+			height: 60px;
+			padding-right: 20px;
+			
+			background: $clr-false;
+			
+			transition: 0.3s;
+
+
+			span {color: $clr-text; font-size: 3rem;}
+		}
+	}
+}
+
+
+// Kiến thức về coding của bạn thật đáng nể
+// Tham gia cùng chúng tôi để cùng tạo ra những dự án thú vị hơn nữa!!
+// Link tại đây.

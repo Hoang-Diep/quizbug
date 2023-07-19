@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,600;0,700;0,800;0,900;1,200;1,300;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100;0,200;0,300;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yomogi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+@font-face {
+  font-family: "Braciola";
+  src: url("../font/Braciola MS ExB.ttf");
+}
+@font-face {
+  font-family: "Braciola Thin";
+  src: url("../font/Braciola MS.ttf");
+}
+.hljs {
+  background: #fff;
+  color: #000;
+  overflow-x: scroll;
+}
+.hljs::-webkit-scrollbar {
+  height: 4px;
+}
+.hljs::-webkit-scrollbar-thumb {
+  background: #fbd85d;
+}
+.hljs::-webkit-scrollbar-thumb:hover {
+  background: #fbd85d;
+}
+.hljs-keyword {
+  font-family: "Chivo Mono", monospace;
+  font-weight: 800;
+}
+.hljs-params {
+  font-family: "Chivo Mono", monospace;
+  font-weight: 400;
+}
+.hljs-property {
+  font-family: "Chivo Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.hljs-variable {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+}
+.hljs-string {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+}
+.hljs-title {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.hljs-number {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+}/*# sourceMappingURL=code.css.map */

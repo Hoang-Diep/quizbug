@@ -1,0 +1,28 @@
+@import "_var.scss";
+@import "_font.scss";
+
+
+// CODE BLOCK
+.hljs {
+    background: $clr-bg;
+    color: $clr-text;
+
+    overflow-x: scroll;
+
+
+    &::-webkit-scrollbar {height: 4px;}
+    &::-webkit-scrollbar-thumb {background: $clr-clicked;}
+    &::-webkit-scrollbar-thumb:hover {background: $clr-clicked;}
+    
+
+    // CODE BLOCK - ELEMENTS
+    &-keyword  {font-family: $fontCode1; font-weight: 800;}
+    &-params   {font-family: $fontCode1; font-weight: 400;}
+    &-property {font-family: $fontCode1; font-weight: 400; font-style: italic;}
+    
+    &-variable {font-family: $fontCode2; font-weight: 400;}
+    &-string   {font-family: $fontCode2; font-weight: 400;}
+    &-title    {font-family: $fontCode2; font-weight: 400; font-style: italic;}
+    
+    &-number {font-family: $fontCode3; font-weight: 400;}
+}
