@@ -209,6 +209,7 @@ html, body {
 
 		// QUIZ PAGE __ SELECT FORM
 		.qp__select-form {
+			position: relative;
 			width: 100%;
 
 
@@ -271,9 +272,8 @@ html, body {
 					
 					width: calc(100% - 5px);
 					height: 50px;
-					margin-top: -5px;
 					
-					background: $clr-bg;
+					background: $clr-clicked;
 					color: $clr-text;
 					
 					font-family: $fontCode2;
@@ -283,10 +283,98 @@ html, body {
 					
 					// QUIZ PAGE __ BUTTON -- DISABLED
 					&:disabled {
+						border-color: $clr-unclick;
 						box-shadow: none;
+
+						background: none;
+						color: $clr-unclick;
+					}
+				}
+			}
+
+
+			// QUIZ PAGE __ TRUE & FALSE RESULT
+			&--result {
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				width: 200px;
+				height: 200px;
+
+				pointer-events: none;
+
+
+				// QUIZ PAGE __ FALSE ICON
+				span#false {
+					position: absolute;
+					transform: rotate(45deg);
+
+					display: none;
+
+					width: 150px;
+					height: 150px;
+
+					opacity: 0.8;
+
+
+					&::before {
+						content: "";
+						
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
 						
 						width: 100%;
-						margin-top: 0;
+						height: 35px;
+						
+						background: $clr-false;
+					}
+
+
+					&::after {
+						content: "";
+						
+						position: absolute;
+						top: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						
+						width: 35px;
+						height: 100%;
+						
+						background: $clr-false;
+					}
+				}
+
+
+				// QUIZ PAGE __ TRUE ICON
+				span#true {
+					position: absolute;
+
+					display: none;
+
+					border: 35px solid $clr-true;
+					border-radius: 50%;
+					
+					width: 150px;
+					height: 150px;
+					
+					opacity: 0.8;
+					animation: flash 0.5s infinite;
+
+
+					@keyframes flash {
+						0% {border-color: $clr-true;}
+						33% {border-color: $clr-true;}
+						66% {border-color: transparent;}
+						100% {border-color: transparent;}
 					}
 				}
 			}
@@ -294,78 +382,27 @@ html, body {
 	}
 
 
-	// QUIZ PAGE __ RESULT
-	.qp__result {
+	// QUIZ PAGE __ CONGRATULATE
+	.qp--congratulate {
+		position: fixed;
+		top: 0;
+		left: 0;
+		transform: scale(0);
 
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		width: 100%;
+		height: 100vh;
+		
+		
+		&::before {
+			content: "";
 
-		// QUIZ PAGE __ CONFETTI FALLING ANIMATION
-		canvas {
-			position: fixed;
-			top: -100%;
-			left: 0;
-			
-			width: 100vw;
-			height: 100vh;
-			
-			pointer-events: none;
-			z-index: 999;
-		}
-	
-	
-		// QUIZ PAGE __ CORRECT ANSWER
-		&--true {
-			position: fixed;
-			top: 50%;
-			left: -100%;
-			transform: translateY(-50%);
-			
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			
-			@include box;
-			
-			width: calc(80% - 5px);
-			height: 450px;
-			padding: 15px;
-			
-			background: $clr-bg;
-			
-			transition: 0.3s;
-			z-index: 2;
-			
-			
-			&.active {left: 50%; transform: translate(-50%, -50%);}
-			
-			
-			// QUIZ PAGE __ RESULT -- CORRECT ANSWER -- EMOJI
-			&__img	{width: 150px; height: auto;}
-			
-			
-			&__content {
-				margin-top: 20px;
-
-				font-family: 'DotGothic16', sans-serif;
-				font-weight: 700;
-				font-size: 0.95rem;
-				line-height: 1.5;
-				letter-spacing: 0.1rem;
-				text-align: center;
-
-
-				p {margin: 5px 0;}
-				a {color: $clr-clicked; text-decoration: none;}
-			}
-		}
-
-
-		&__blur {
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
-
-			display: none;
 			
 			width: 100%;
 			height: 100vh;
@@ -373,39 +410,114 @@ html, body {
 			background: $clr-bg;
 			opacity: 0.9;
 
-			z-index: 1;
+			z-index: -1;
+		}
+
+
+		// QUIZ PAGE __ CONFETTI FALLING ANIMATION
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			// width: 100%;
+			// height: 100%;
+			
+			pointer-events: none;
 		}
 	
-		
-		// QUIZ PAGE __ WRONG ANSWER
-		&--false {
+	
+		// QUIZ PAGE __ CONGRATULATE CONTAINER
+		&__container {
 			position: fixed;
-			top: 150px;
-			left: -100%;
-			
+			top: -100%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
 			display: flex;
-			justify-content: flex-end;
+			flex-direction: column;
+			justify-content: center;
 			align-items: center;
-			
+
 			@include box;
-			border-left: none;
-			border-radius: 0 5px 5px 0;
-			
-			width: 100px;
-			height: 60px;
-			padding-right: 20px;
-			
-			background: $clr-false;
-			
-			transition: 0.3s;
+
+			width: 350px;
+			height: 450px;
+			padding: 20px;
+			gap: 50px;
+
+			background: $clr-bg;
+			transition: 0.5s;
 
 
-			span {color: $clr-text; font-size: 3rem;}
+			&__img {
+				position: relative;
+
+				width: 300px;
+				height: 150px;
+
+				overflow: hidden;
+
+
+				span.rainbow {
+					position: absolute;
+					left: 50%;
+					transform-origin: bottom;
+
+					animation: rainbow 3s infinite;
+
+
+					&:nth-child(1) {@include rainbow(0, 14px); animation-delay: 0.3s;}
+					&:nth-child(2) {@include rainbow(1, 14px); animation-delay: 0.35s;}
+					&:nth-child(3) {@include rainbow(2, 14px); animation-delay: 0.4s;}
+					&:nth-child(4) {@include rainbow(3, 14px); animation-delay: 0.45s;}
+					&:nth-child(5) {@include rainbow(4, 14px); animation-delay: 0.5s;}
+					&:nth-child(6) {@include rainbow(5, 14px); animation-delay: 0.55s;}
+					&:nth-child(7) {@include rainbow(6, 14px); animation-delay: 0.6s;}
+					
+					
+					// RAINBOW'S ANIMATION
+					@keyframes rainbow {
+						30% {transform: rotate(180deg);}
+						55% {transform: rotate(180deg);}
+						85% {transform: rotate(360deg);}
+						100% {transform: rotate(360deg);}
+					}
+				}
+			}
+
+
+			&__content {font-family: 'DotGothic16', sans-serif; text-align: center;}
+			&__content a {
+				display: inline-block;
+
+				@include box;
+
+				margin-top: 40px;
+				padding: 10px;
+
+				background: $clr-clicked;
+				color: $clr-text;
+				text-decoration: none;
+			}
+
+
+			// QUIZ PAGE __ CONGATULATE BLOCK CLOSED BUTTON
+			button#closed {
+				position: absolute;
+				top: 0;
+				right: 0;
+
+				border: none;
+				width: 50px;
+				height: 50px;
+				
+				background: transparent;
+				color: $clr-text;
+
+				
+				span {font-size: 35px; font-weight: 700;}
+			}
 		}
 	}
 }
-
-
-// Kiến thức về coding của bạn thật đáng nể
-// Tham gia cùng chúng tôi để cùng tạo ra những dự án thú vị hơn nữa!!
-// Link tại đây.

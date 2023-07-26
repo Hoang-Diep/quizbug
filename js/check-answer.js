@@ -7,10 +7,11 @@ function selected() {
 function checkAnswer() {
     var opt = document.getElementsByName("opt");
 
-    var trueAnswer  = document.querySelector(".qp__result--true"),
-        canvas      = document.querySelector("canvas#my-canvas"),
-        blur        = document.querySelector(".qp__result__blur"),
-        falseAnswer = document.querySelector(".qp__result--false");
+    var falseAnswer = document.querySelector(".qp__select-form--result #false"),
+        trueAnswer  = document.querySelector(".qp__select-form--result #true"),
+        congrate    = document.querySelector(".qp--congratulate"),
+        congrateBox = document.querySelector(".qp--congratulate__container"),
+        closedBtn   = document.querySelector("button#closed");
 
     // CHECK USER'S ANSWER
     for (var i = 0; i < opt.length; i++) {
@@ -18,24 +19,30 @@ function checkAnswer() {
 
             if (opt[i].value == answer) {
                 // IF USER SELECTED ANSWER BE RIGHT
-                canvas.style.top = "0";
-                trueAnswer.classList.add("active");
-                blur.style.display = "block";
+                trueAnswer.style.display = "block";
+
+                // SHOW THE CONGRATULATE BLOCK
+                setTimeout(() => congratulate(), 2000);
+
+                function congratulate() {
+                    trueAnswer.style.display = "none";
+                    congrate.style.transform = "scale(1)";
+                    congrateBox.style.top = "50%";
+                }
                 
             } else {
                 // IF USER SELECTED ANSWER BE WRONG
-                falseAnswer.style.left = "-5px";
+                falseAnswer.style.display = "block";
 
                 // AUTOMATIC CLOSE FUNCTION
-                setTimeout(() => falseAnswer.style.left = "-100%", 3000)
+                setTimeout(() => falseAnswer.style.display = "none", 2000);
             }
         }
 	}
-
-    // blur.onclick = function() {
-    //     canvas.classList.remove("active");
-    //     trueAnswer.classList.remove("active");
-
-    //     blur.style.display = "none";
-    // }
+    
+    // CLOSE THE CONGRATULATE BLOCK
+    closedBtn.onclick = function() {
+        congrateBox.style.top = "-100%";
+        setTimeout(() => congrate.style.transform = "scale(0)", 200);
+    }
 }
